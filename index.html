@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王思淳 — 个人简历</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --ink:      #1A1917;
+  --off-white:#F7F5F0;
+  --surface:  #EFECE5;
+  --muted:    #8A8780;
+  --gold:     #B8925A;
+  --gold-lt:  #E8D9C0;
+  --border:   rgba(26,25,23,0.12);
+  --border-md:rgba(26,25,23,0.22);
+  --serif:    'Noto Serif SC', 'Source Han Serif CN', Georgia, serif;
+  --sans:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --max:      900px;
+  --drawer-w: 520px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--off-white);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.accent-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--ink) 65%);
+  z-index: 200;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 3px; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(247,245,240,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.nav-name { font-family: var(--serif); font-size: 1rem; letter-spacing: 0.05em; }
+
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 0.5px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* LAYOUT */
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+section { padding: 6rem 0; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.section-num {
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--gold-lt);
+  line-height: 1;
+  user-select: none;
+}
+
+.section-label {
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  border-left: 2px solid var(--gold);
+  padding-left: 0.75rem;
+}
+
+/* HERO */
+#hero {
+  padding-top: 9.5rem;
+  padding-bottom: 6rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: center;
+  min-height: 100vh;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(3.6rem, 7vw, 5.5rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name-en {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.hero-tagline {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-weight: 300;
+  border-left: 2px solid var(--gold-lt);
+  padding-left: 1rem;
+}
+
+.hero-divider { width: 2.5rem; height: 1px; background: var(--gold); margin-bottom: 1.5rem; }
+
+.hero-bio {
+  font-size: 14.5px;
+  line-height: 2;
+  color: #4A4843;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.meta-item {
+  background: var(--surface);
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+}
+
+.meta-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+.meta-value { font-size: 13.5px; font-weight: 400; color: var(--ink); }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  border: 0.5px solid var(--ink);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-cta:hover { background: var(--ink); color: var(--off-white); }
+
+/* EXPERIENCE */
+#experience { border-bottom: 0.5px solid var(--border); }
+
+.exp-list { display: flex; flex-direction: column; }
+
+.exp-card {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: 2.25rem 0;
+  border-bottom: 0.5px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+  position: relative;
+}
+
+.exp-card:last-child { border-bottom: none; }
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  left: -3.5rem;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.exp-card:hover { padding-left: 0.75rem; background: rgba(184,146,90,0.04); }
+.exp-card:hover::before { transform: scaleY(1); }
+
+.exp-period { font-size: 12px; color: var(--muted); font-weight: 400; margin-bottom: 0.3rem; letter-spacing: 0.02em; }
+.exp-company { font-size: 12px; color: var(--gold); font-weight: 400; }
+.exp-title { font-size: 16.5px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.4; }
+
+.exp-summary {
+  font-size: 13.5px;
+  color: #5A5752;
+  line-height: 1.8;
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+}
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.tag {
+  font-size: 11px;
+  padding: 2px 9px;
+  border: 0.5px solid var(--border-md);
+  border-radius: 2rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.exp-arrow {
+  font-size: 18px;
+  color: var(--muted);
+  align-self: center;
+  flex-shrink: 0;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.exp-card:hover .exp-arrow { transform: translateX(4px); color: var(--gold); }
+
+/* EDUCATION */
+#education { border-bottom: 0.5px solid var(--border); }
+
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+.edu-card {
+  padding: 2.5rem 2.5rem 2.5rem 0;
+  border-right: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.edu-card:nth-child(2n) { padding-right: 0; padding-left: 2.5rem; border-right: none; }
+.edu-card:nth-last-child(-n+2) { border-bottom: none; }
+
+.edu-year { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--gold-lt); line-height: 1; margin-bottom: 0.75rem; }
+.edu-degree { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.4rem; line-height: 1.4; }
+.edu-school { font-size: 13px; color: var(--gold); margin-bottom: 0.5rem; }
+.edu-note { font-size: 13px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+/* SKILLS */
+#skills { border-bottom: 0.5px solid var(--border); }
+
+.skills-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+
+.skill-group {
+  padding: 2rem;
+  border-right: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.skill-group:nth-child(3n) { border-right: none; }
+.skill-group:nth-last-child(-n+3) { border-bottom: none; }
+
+.skill-group-name { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 400; }
+
+.skill-bar-list { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.skill-row { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.skill-name { font-size: 13.5px; font-weight: 300; color: var(--ink); display: flex; justify-content: space-between; }
+.skill-level { font-size: 11px; color: var(--muted); }
+
+.skill-track { height: 2px; background: var(--border); border-radius: 1px; overflow: hidden; }
+.skill-fill { height: 100%; background: var(--gold); border-radius: 1px; }
+
+/* PROJECTS */
+#projects { border-bottom: 0.5px solid var(--border); }
+
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.project-card {
+  background: var(--surface);
+  padding: 2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover { background: #E8E3D8; transform: translateY(-2px); }
+.project-card:hover::after { transform: scaleX(1); }
+
+.project-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--gold-lt); line-height: 1; margin-bottom: 1rem; }
+.project-name { font-size: 17px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.65rem; line-height: 1.35; }
+
+.project-desc {
+  font-size: 13px;
+  color: #5A5752;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-footer { display: flex; justify-content: space-between; align-items: center; }
+.project-year { font-size: 11.5px; color: var(--muted); }
+.project-more { font-size: 12px; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; }
+
+/* CONTACT */
+#contact { padding-bottom: 8rem; }
+
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+.contact-headline { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1rem; }
+.contact-sub { font-size: 14px; color: var(--muted); line-height: 1.8; font-weight: 300; }
+
+.contact-links { display: flex; flex-direction: column; }
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-bottom: 0.5px solid var(--border);
+  text-decoration: none;
+  color: var(--ink);
+  gap: 1rem;
+  transition: padding-left 0.2s ease;
+}
+
+.contact-row:first-child { border-top: 0.5px solid var(--border); }
+.contact-row:hover { padding-left: 0.75rem; }
+
+.contact-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+  transition: background 0.2s;
+  font-family: var(--serif);
+}
+
+.contact-row:hover .contact-icon { background: var(--gold-lt); }
+
+.contact-info { flex: 1; }
+.contact-platform { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.contact-handle { font-size: 14px; font-weight: 300; }
+
+.contact-arr { font-size: 14px; color: var(--muted); transition: transform 0.2s, color 0.2s; }
+.contact-row:hover .contact-arr { transform: translateX(4px); color: var(--gold); }
+
+/* FOOTER */
+footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
+
+/* ═══ DRAWER SYSTEM ═══ */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(26,25,23,0.45);
+  z-index: 300;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+  backdrop-filter: blur(4px);
+}
+
+.overlay.open { opacity: 1; pointer-events: all; }
+
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(var(--drawer-w), 92vw);
+  background: var(--off-white);
+  z-index: 400;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.32, 0, 0.15, 1);
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+  border-left: 0.5px solid var(--border-md);
+}
+
+.drawer.open { transform: translateX(0); }
+
+.drawer-top {
+  position: sticky; top: 0;
+  background: rgba(247,245,240,0.95);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 2rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10;
+}
+
+.drawer-close {
+  width: 36px; height: 36px;
+  border: 0.5px solid var(--border-md);
+  background: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--muted);
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.drawer-close:hover { background: var(--surface); color: var(--ink); }
+
+.drawer-type { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+
+.drawer-body { padding: 2.5rem 2rem; flex: 1; }
+
+.d-period { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.d-company { font-size: 13.5px; color: var(--gold); margin-bottom: 1.25rem; }
+.d-title { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 1.75rem; }
+
+.d-divider { height: 0.5px; background: var(--border); margin: 1.75rem 0; }
+
+.d-section-label {
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem; font-weight: 400;
+  border-left: 2px solid var(--gold); padding-left: 0.6rem;
+}
+
+.d-desc { font-size: 14px; line-height: 2; color: #4A4843; font-weight: 300; }
+
+.d-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+
+.d-list li {
+  font-size: 13.5px; color: #4A4843; line-height: 1.75; font-weight: 300;
+  padding-left: 1.25rem; position: relative;
+}
+
+.d-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.7em;
+  width: 5px; height: 1px; background: var(--gold);
+}
+
+.d-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.d-tag {
+  font-size: 11px; padding: 3px 10px;
+  background: var(--surface);
+  border: 0.5px solid var(--border-md);
+  border-radius: 2rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.d-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 13px; color: var(--gold); text-decoration: none;
+  border-bottom: 0.5px solid var(--gold-lt); padding-bottom: 1px;
+  transition: border-color 0.2s; margin-top: 1.5rem;
+}
+
+.d-link:hover { border-color: var(--gold); }
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  main { padding: 0 1.5rem; }
+  #hero { grid-template-columns: 1fr; gap: 2.5rem; min-height: auto; padding-top: 7rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .edu-card, .edu-card:nth-child(2n) { padding: 1.5rem 0; border-right: none; }
+  .skills-wrap { grid-template-columns: repeat(2, 1fr); }
+  .skill-group:nth-child(3n) { border-right: 0.5px solid var(--border); }
+  .projects-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<nav>
+  <span class="nav-name">王思淳</span>
+  <ul class="nav-links">
+    <li><a href="#experience">工作经历</a></li>
+    <li><a href="#education">教育背景</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#projects">项目经历</a></li>
+    <li><a href="#contact">联系方式</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">个人简历 · Portfolio</p>
+      <h1 class="hero-name">王思淳</h1>
+      <p class="hero-name-en">Ele Wang</p>
+      <p class="hero-tagline">
+        跨行业运营管理者 · AI 工具深度实践者<br>
+        · 探索技术驱动的个人生产力边界
+      </p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-divider"></div>
+      <p class="hero-bio">
+        拥有电商、制造业及建筑监理行业共六年管理经验，擅长项目统筹与跨部门协调。近年深度投入 AI 工具研究与个人工作流自动化实践，将 LLM、MCP、知识库等前沿技术整合进日常工作。现已获加拿大 Moose Jaw 建筑监理职位 offer，同步探索 vibe coding 与个人项目开发方向。
+      </p>
+      <div class="hero-meta-grid">
+        <div class="meta-item">
+          <p class="meta-label">📍 所在城市</p>
+          <p class="meta-value">Moose Jaw，加拿大</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">🌐 语言能力</p>
+          <p class="meta-value">中文（母语）/ 英文（IELTS 5.5）</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">💼 当前状态</p>
+          <p class="meta-value">已获 Building Superintendent Offer</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">🎓 最高学历</p>
+          <p class="meta-value">电气工程与清洁能源文凭</p>
+        </div>
+      </div>
+      <a href="#contact" class="hero-cta">立即联系 →</a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-label">工作经历</span>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-card" onclick="openDrawer('exp',0)">
+        <div class="exp-meta">
+          <p class="exp-period">2022 — 2025</p>
+          <p class="exp-company">建筑监理咨询有限公司</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-title">经营部副部长</p>
+          <p class="exp-summary">主持经营部门日常运作，协调公司业务拓展与项目落地执行。</p>
+          <div class="exp-tags">
+            <span class="tag">项目管理</span>
+            <span class="tag">业务拓展</span>
+            <span class="tag">团队管理</span>
+          </div>
+        </div>
+        <span class="exp-arrow">→</span>
+      </div>
+
+      <div class="exp-card" onclick="openDrawer('exp',1)">
+        <div class="exp-meta">
+          <p class="exp-period">2021 — 2022</p>
+          <p class="exp-company">制造业公司</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-title">人事主管</p>
+          <p class="exp-summary">主导工厂人事管理工作，规范招聘与劳动关系流程。</p>
+          <div class="exp-tags">
+            <span class="tag">人事管理</span>
+            <span class="tag">招聘</span>
+          </div>
+        </div>
+        <span class="exp-arrow">→</span>
+      </div>
+
+      <div class="exp-card" onclick="openDrawer('exp',2)">
+        <div class="exp-meta">
+          <p class="exp-period">2019 — 2021</p>
+          <p class="exp-company">电商平台</p>
+        </div>
+        <div class="exp-content">
+          <p class="exp-title">电商运营专员</p>
+          <p class="exp-summary">负责线上店铺日常运营，涵盖商品上架、订单管理与客户服务流程优化。</p>
+          <div class="exp-tags">
+            <span class="tag">电商运营</span>
+            <span class="tag">订单管理</span>
+          </div>
+        </div>
+        <span class="exp-arrow">→</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-label">教育背景</span>
+    </div>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <p class="edu-year">2024</p>
+        <p class="edu-degree">电气工程与清洁能源文凭</p>
+        <p class="edu-school">BCA Academy · 加拿大</p>
+        <p class="edu-note">WES 加拿大学历等效认证</p>
+      </div>
+
+      <div class="edu-card">
+        <p class="edu-year">2023</p>
+        <p class="edu-degree">工商管理研修班结业</p>
+        <p class="edu-school">陕西工商管理硕士学院 · 西安</p>
+        <p class="edu-note">依托西安交通大学等七所高校联合办学</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-label">技能与专业能力</span>
+    </div>
+    <div class="skills-wrap">
+
+      <div class="skill-group">
+        <p class="skill-group-name">语言能力</p>
+        <div class="skill-bar-list">
+          <div class="skill-row">
+            <span class="skill-name">中文（普通话）<span class="skill-level">母语</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">英语<span class="skill-level">IELTS G 5.5</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-name">核心专业能力</p>
+        <div class="skill-bar-list">
+          <div class="skill-row">
+            <span class="skill-name">项目统筹<span class="skill-level">精通</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">跨部门协调<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">运营管理<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-name">数字工具 & 平台</p>
+        <div class="skill-bar-list">
+          <div class="skill-row">
+            <span class="skill-name">TikTok/Instagram/YouTube<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">数据分析工具<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">办公软件<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-name">AI & 生产力工具</p>
+        <div class="skill-bar-list">
+          <div class="skill-row">
+            <span class="skill-name">Claude/LLM工具链<span class="skill-level">深度使用</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Obsidian知识库<span class="skill-level">熟练</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">Cursor+Claude Code<span class="skill-level">日常使用</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-name">证书 & 资质</p>
+        <div class="skill-bar-list">
+          <div class="skill-row">
+            <span class="skill-name">BCA Academy 电气工程文凭<span class="skill-level">2024</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">WES 学历认证<span class="skill-level">2024</span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">工信部 AI 智能体应用工程师<span class="skill-level"></span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">全媒体运营师<span class="skill-level"></span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-name">高级电子商务师<span class="skill-level"></span></span>
+            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-name">兴趣与视野</p>
+        <div class="skill-bar-list">
+          <div class="skill-row"><span class="skill-name">AI工具研究与应用</span></div>
+          <div class="skill-row"><span class="skill-name">Vibe Coding与个人项目开发</span></div>
+          <div class="skill-row"><span class="skill-name">投资与宏观经济</span></div>
+          <div class="skill-row"><span class="skill-name">3D建模（Blender）</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-label">项目经历</span>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card" onclick="openDrawer('proj',0)">
+        <p class="project-num">01</p>
+        <p class="project-name">AI 工作流自动化实践</p>
+        <p class="project-desc">将 LLM 模型与 MCP 协议整合进个人日常工作流，探索 AI 工具对个人生产力的系统性提升路径。</p>
+        <div class="project-footer">
+          <span class="project-year">2024</span>
+          <span class="project-more">查看详情 →</span>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openDrawer('proj',1)">
+        <p class="project-num">02</p>
+        <p class="project-name">Obsidian 个人知识库系统</p>
+        <p class="project-desc">基于 Obsidian 搭建个人 RAG 知识库，结合本地 AI 模型实现知识自动归档与语义检索。</p>
+        <div class="project-footer">
+          <span class="project-year">2024</span>
+          <span class="project-more">查看详情 →</span>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openDrawer('proj',2)">
+        <p class="project-num">03</p>
+        <p class="project-name">MediaCrawler 社媒数据采集</p>
+        <p class="project-desc">应用开源爬虫工具进行社交媒体数据采集，服务于内容分析与舆情研究场景。</p>
+        <div class="project-footer">
+          <span class="project-year">2024</span>
+          <span class="project-more">查看详情 →</span>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="openDrawer('proj',3)">
+        <p class="project-num">04</p>
+        <p class="project-name">个人简历网站</p>
+        <p class="project-desc">使用纯 HTML/CSS/JS 构建个人简历网站，结合 Claude Code 进行 AI 辅助开发与持续迭代。</p>
+        <div class="project-footer">
+          <span class="project-year">2025</span>
+          <span class="project-more">查看详情 →</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-label">联系方式</span>
+    </div>
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-headline">期待与您<br>携手共创。</h2>
+        <p class="contact-sub">欢迎与我探讨 AI 工具、运营管理或海外新生活的相关话题，期待连接志同道合的伙伴。</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:bboyyision@gmail.com" class="contact-row">
+          <div class="contact-icon">✉</div>
+          <div class="contact-info">
+            <p class="contact-platform">电子邮件</p>
+            <p class="contact-handle">bboyyision@gmail.com</p>
+          </div>
+          <span class="contact-arr">→</span>
+        </a>
+        <a href="https://github.com/bboyyision" target="_blank" class="contact-row">
+          <div class="contact-icon">gh</div>
+          <div class="contact-info">
+            <p class="contact-platform">GitHub</p>
+            <p class="contact-handle">github.com/bboyyision</p>
+          </div>
+          <span class="contact-arr">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 王思淳 · 保留所有权利</p>
+  <p>最后更新：2025 年 5 月</p>
+</footer>
+
+<!-- OVERLAY & DRAWER -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-top">
+    <span class="drawer-type" id="drawerType">详情</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   数据区 — 将所有【】内容替换为真实信息即可
+══════════════════════════════════════════════════════ */
+
+const expData = [
+  {
+    period:   '2022 — 2025',
+    company:  '建筑监理咨询有限公司',
+    location: '西安，陕西',
+    title:    '经营部副部长',
+    desc:     '主持经营部门日常运作，负责项目对接与内部管理，协调公司业务拓展与项目落地执行，建立部门标准化运营流程。',
+    duties: [
+      '对接新项目洽谈与合同跟进',
+      '统筹部门内部行政与人员管理',
+      '协调各项目组资源调配',
+      '跟进项目进度并向上汇报',
+    ],
+    achievements: [
+      '成功对接并推进多个监理项目落地',
+      '建立部门标准化运营流程，行政周转效率提升约 20%',
+    ],
+    tags: ['项目管理','业务拓展','团队管理','运营统筹'],
+  },
+  {
+    period:   '2021 — 2022',
+    company:  '制造业公司',
+    location: '西安，陕西',
+    title:    '人事主管',
+    desc:     '主导工厂人事管理工作，负责招聘、考勤及员工关系维护，规范人事管理流程。',
+    duties: [
+      '统筹员工招聘与入职流程',
+      '管理考勤与薪资核算',
+      '处理劳动关系与员工投诉',
+    ],
+    achievements: [
+      '规范人事管理流程，文档准确率显著提升',
+      '有效降低员工流失率',
+    ],
+    tags: ['人事管理','招聘','劳动关系'],
+  },
+  {
+    period:   '2019 — 2021',
+    company:  '电商平台',
+    location: '西安，陕西',
+    title:    '电商运营专员',
+    desc:     '负责线上店铺日常运营，涵盖商品上架、订单管理与客户服务流程优化。',
+    duties: [
+      '商品信息维护与上架管理',
+      '订单跟踪与售后处理',
+      '参与营销活动策划与执行',
+    ],
+    achievements: [
+      '积累完整电商运营闭环经验',
+      '培养数据驱动的运营思维',
+    ],
+    tags: ['电商运营','订单管理','客户服务'],
+  },
+];
+
+const projData = [
+  {
+    year:    '2024',
+    name:    'AI 工作流自动化实践',
+    role:    '独立实践者',
+    org:     '个人项目',
+    desc:    '将 LLM 模型与 MCP 协议整合进个人日常工作流，探索 AI 工具对个人生产力的系统性提升路径。',
+    process: [
+      '调研主流 LLM 工具与 MCP 协议，搭建本地运行环境',
+      '将 Claude、DeepSeek 等模型接入 Cursor、Obsidian 等生产力工具',
+      '持续迭代工作流，形成个人 AI 辅助工作标准流程',
+    ],
+    results: [
+      '个人内容生产与信息处理效率显著提升',
+      '积累完整 AI 工具链搭建与调试经验',
+    ],
+    tags: ['LLM','MCP','Claude','工作流自动化'],
+    link: null,
+  },
+  {
+    year:    '2024',
+    name:    'Obsidian 个人知识库系统',
+    role:    '独立开发者',
+    org:     '个人项目',
+    desc:    '基于 Obsidian 搭建个人 RAG 知识库，结合本地 AI 模型实现知识自动归档与语义检索。',
+    process: [
+      '设计知识库目录结构与标签体系',
+      '接入 bge-m3 向量模型实现本地语义搜索',
+    ],
+    results: [
+      '实现个人知识自动归档与高效检索',
+      '形成可持续迭代的个人第二大脑系统',
+    ],
+    tags: ['Obsidian','RAG','知识管理','本地AI'],
+    link: null,
+  },
+  {
+    year:    '2024',
+    name:    'MediaCrawler 社媒数据采集',
+    role:    '独立实践者',
+    org:     '个人项目',
+    desc:    '应用开源爬虫工具进行社交媒体数据采集，服务于内容分析与舆情研究场景。',
+    process: [
+      '部署 MediaCrawler 并配置采集目标平台',
+      '对采集数据进行清洗与结构化处理',
+    ],
+    results: [
+      '掌握社媒数据采集与分析完整流程',
+    ],
+    tags: ['MediaCrawler','数据采集','舆情分析'],
+    link: null,
+  },
+  {
+    year:    '2025',
+    name:    '个人简历网站',
+    role:    '独立开发者',
+    org:     '个人项目',
+    desc:    '使用纯 HTML/CSS/JS 构建个人简历网站，结合 Claude Code 进行 AI 辅助开发与持续迭代。',
+    process: [
+      '设计网站结构与视觉风格，确定极简现代设计方向',
+      '使用 Claude Code 完成代码生成与内容填充',
+    ],
+    results: [
+      '完成可部署的单文件静态简历网站',
+      '探索出 AI 辅助前端开发的高效工作流',
+    ],
+    tags: ['HTML/CSS','Claude Code','Vibe Coding'],
+    link: null,
+  },
+];
+
+/* ══ DRAWER LOGIC ══ */
+function openDrawer(type, index) {
+  const overlay = document.getElementById('overlay');
+  const drawer  = document.getElementById('drawer');
+  const body    = document.getElementById('drawerBody');
+  const label   = document.getElementById('drawerType');
+
+  if (type === 'exp') {
+    const d = expData[index];
+    label.textContent = '工作经历详情';
+    body.innerHTML = `
+      <p class="d-period">${d.period}&ensp;·&ensp;${d.location}</p>
+      <p class="d-company">${d.company}</p>
+      <h2 class="d-title">${d.title}</h2>
+      <div class="d-divider"></div>
+      <p class="d-section-label">岗位概述</p>
+      <p class="d-desc">${d.desc}</p>
+      <div class="d-divider"></div>
+      <p class="d-section-label">主要职责</p>
+      <ul class="d-list">${d.duties.map(r=>`<li>${r}</li>`).join('')}</ul>
+      <div class="d-divider"></div>
+      <p class="d-section-label">核心成果</p>
+      <ul class="d-list">${d.achievements.map(a=>`<li>${a}</li>`).join('')}</ul>
+      <div class="d-divider"></div>
+      <p class="d-section-label">相关技能</p>
+      <div class="d-tags">${d.tags.map(t=>`<span class="d-tag">${t}</span>`).join('')}</div>
+    `;
+  } else {
+    const d = projData[index];
+    label.textContent = '项目经历详情';
+    body.innerHTML = `
+      <p class="d-period">${d.year}&ensp;·&ensp;${d.org}</p>
+      <p class="d-company">角色：${d.role}</p>
+      <h2 class="d-title">${d.name}</h2>
+      <div class="d-divider"></div>
+      <p class="d-section-label">项目背景</p>
+      <p class="d-desc">${d.desc}</p>
+      <div class="d-divider"></div>
+      <p class="d-section-label">执行过程</p>
+      <ul class="d-list">${d.process.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <div class="d-divider"></div>
+      <p class="d-section-label">项目成果</p>
+      <ul class="d-list">${d.results.map(r=>`<li>${r}</li>`).join('')}</ul>
+      <div class="d-divider"></div>
+      <p class="d-section-label">相关技能</p>
+      <div class="d-tags">${d.tags.map(t=>`<span class="d-tag">${t}</span>`).join('')}</div>
+      ${d.link ? `<a href="${d.link}" target="_blank" class="d-link">${d.linkText} →</a>` : ''}
+    `;
+  }
+
+  overlay.classList.add('open');
+  drawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  drawer.scrollTop = 0;
+}
+
+function closeDrawer() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+</script>
+</body>
+</html>
