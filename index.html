@@ -22,6 +22,11 @@
   --sans:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --max:      900px;
   --drawer-w: 520px;
+
+  /* 新增：更具格调的层次与过渡（Direction 3 & 4） */
+  --shadow-soft: 0 2px 6px rgba(26,25,23,0.05);
+  --shadow-elevated: 0 12px 32px rgba(26,25,23,0.09), 0 4px 10px rgba(26,25,23,0.06);
+  --transition-smooth: cubic-bezier(0.32, 0.01, 0.18, 1);
 }
 
 /* ── Dark mode variables ── */
@@ -33,6 +38,10 @@ body.dark {
   --gold-lt:   #3D2D1A;
   --border:    rgba(240,237,230,0.10);
   --border-md: rgba(240,237,230,0.18);
+
+  /* 深色模式对应阴影 */
+  --shadow-soft: 0 2px 6px rgba(0,0,0,0.25);
+  --shadow-elevated: 0 12px 32px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.3);
 }
 body.dark nav          { background: rgba(26,25,23,0.92); }
 body.dark .drawer      { background: var(--off-white); }
@@ -241,6 +250,53 @@ section { padding: 6rem 0; }
 
 .hero-cta:hover { background: var(--ink); color: var(--off-white); }
 
+/* Direction 4：Hero 极简几何装饰 - 安静的现代工艺水印感 */
+.hero-right {
+  position: relative;
+}
+.hero-deco {
+  position: absolute;
+  top: 12px;
+  right: -8px;
+  width: 142px;
+  height: 142px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.10;
+  border: 1px solid var(--gold);
+  transform: rotate(14deg);
+  transition: opacity 0.4s var(--transition-smooth), transform 0.6s var(--transition-smooth);
+}
+/* 内部细线构图 - 更可靠的工艺感实现 */
+.hero-deco::before {
+  content: '';
+  position: absolute;
+  top: 22px; left: 18px;
+  width: 100%; height: 1px;
+  background: var(--gold);
+}
+.hero-deco::after {
+  content: '';
+  position: absolute;
+  top: 18px; right: 24px;
+  width: 1px; height: 100%;
+  background: var(--gold);
+  opacity: 0.6;
+}
+/* 右下角小矩形点缀 */
+.hero-deco span {
+  position: absolute;
+  bottom: 26px; right: 22px;
+  width: 34px; height: 34px;
+  border: 1px solid var(--gold);
+  opacity: 0.28;
+}
+
+#hero:hover .hero-deco {
+  opacity: 0.16;
+  transform: rotate(10deg);
+}
+
 /* EXPERIENCE */
 #experience { border-bottom: 0.5px solid var(--border); }
 
@@ -254,8 +310,9 @@ section { padding: 6rem 0; }
   padding: 2.25rem 0;
   border-bottom: 0.5px solid var(--border);
   cursor: pointer;
-  transition: background 0.2s ease, padding-left 0.2s ease;
+  transition: background 0.2s ease, padding-left 0.2s ease, box-shadow 0.3s var(--transition-smooth), transform 0.3s var(--transition-smooth);
   position: relative;
+  box-shadow: var(--shadow-soft);
 }
 
 .exp-card:last-child { border-bottom: none; }
@@ -265,15 +322,24 @@ section { padding: 6rem 0; }
   position: absolute;
   left: -3.5rem;
   top: 0; bottom: 0;
-  width: 2px;
+  width: 1.5px;
   background: var(--gold);
-  transform: scaleY(0);
+  opacity: 0.25;
+  transform: scaleY(0.6);
   transform-origin: top;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s var(--transition-smooth), opacity 0.25s ease;
 }
 
-.exp-card:hover { padding-left: 0.75rem; background: rgba(184,146,90,0.04); }
-.exp-card:hover::before { transform: scaleY(1); }
+.exp-card:hover {
+  padding-left: 0.75rem;
+  background: rgba(184,146,90,0.035);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated);
+}
+.exp-card:hover::before {
+  transform: scaleY(1);
+  opacity: 0.85;
+}
 
 .exp-period { font-size: 12px; color: var(--muted); font-weight: 400; margin-bottom: 0.3rem; letter-spacing: 0.02em; }
 .exp-company { font-size: 12px; color: var(--gold); font-weight: 400; }
@@ -286,6 +352,7 @@ section { padding: 6rem 0; }
   font-weight: 300;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 0.9rem;
@@ -367,9 +434,10 @@ section { padding: 6rem 0; }
   background: var(--surface);
   padding: 2rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.35s var(--transition-smooth), transform 0.35s var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-soft);
 }
 
 .project-card::after {
@@ -377,14 +445,20 @@ section { padding: 6rem 0; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 2px;
-  background: var(--gold);
+  background: linear-gradient(to right, var(--gold), var(--gold-lt));
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s var(--transition-smooth);
 }
 
-.project-card:hover { background: #E8E3D8; transform: translateY(-2px); }
-.project-card:hover::after { transform: scaleX(1); }
+.project-card:hover {
+  background: #E8E3D8;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-elevated);
+}
+.project-card:hover::after {
+  transform: scaleX(1);
+}
 
 .project-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--gold-lt); line-height: 1; margin-bottom: 1rem; }
 .project-name { font-size: 17px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.65rem; line-height: 1.35; }
@@ -397,6 +471,7 @@ section { padding: 6rem 0; }
   margin-bottom: 1.25rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -582,6 +657,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
   .nav-links { display: none; }
   main { padding: 0 1.5rem; }
   #hero { grid-template-columns: 1fr; gap: 2.5rem; min-height: auto; padding-top: 7rem; }
+  .hero-deco { display: none; } /* 小屏隐藏，避免干扰 */
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
   .edu-grid { grid-template-columns: 1fr; }
@@ -624,6 +700,8 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
     </div>
     <div class="hero-right">
       <div class="hero-divider"></div>
+      <!-- 极简抽象几何装饰（Direction 4）：安静的现代工艺感，不抢内容 -->
+      <div class="hero-deco" aria-hidden="true"><span></span></div>
       <p class="hero-bio">
         拥有电商、制造业及建筑监理行业共六年管理经验，擅长项目统筹与跨部门协调。近年深度投入 AI 工具研究与个人工作流自动化实践，将 LLM、MCP、知识库等前沿技术整合进日常工作。现已获加拿大 Moose Jaw 建筑监理职位 offer，同步探索 vibe coding 与个人项目开发方向。
       </p>
@@ -659,7 +737,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
 
       <div class="exp-card" onclick="openDrawer('exp',0)">
         <div class="exp-meta">
-          <p class="exp-period">2022 — 2025</p>
+          <p class="exp-period">2023 — 2026</p>
           <p class="exp-company">建筑监理咨询有限公司</p>
         </div>
         <div class="exp-content">
@@ -676,7 +754,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
 
       <div class="exp-card" onclick="openDrawer('exp',1)">
         <div class="exp-meta">
-          <p class="exp-period">2021 — 2022</p>
+          <p class="exp-period">2022 — 2023</p>
           <p class="exp-company">制造业公司</p>
         </div>
         <div class="exp-content">
@@ -692,11 +770,11 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
 
       <div class="exp-card" onclick="openDrawer('exp',2)">
         <div class="exp-meta">
-          <p class="exp-period">2019 — 2021</p>
+          <p class="exp-period">2020 — 2022</p>
           <p class="exp-company">电商平台</p>
         </div>
         <div class="exp-content">
-          <p class="exp-title">电商运营专员</p>
+          <p class="exp-title">电商运营助理</p>
           <p class="exp-summary">负责线上店铺日常运营，涵盖商品上架、订单管理与客户服务流程优化。</p>
           <div class="exp-tags">
             <span class="tag">电商运营</span>
@@ -718,7 +796,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
     <div class="edu-grid">
 
       <div class="edu-card">
-        <p class="edu-year">2024</p>
+        <p class="edu-year">2017</p>
         <p class="edu-degree">电气工程与清洁能源文凭</p>
         <p class="edu-school">BCA Academy · 加拿大</p>
         <p class="edu-note">WES 加拿大学历等效认证</p>
@@ -729,6 +807,28 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="edu-degree">工商管理研修班结业</p>
         <p class="edu-school">陕西工商管理硕士学院 · 西安</p>
         <p class="edu-note">依托西安交通大学等七所高校联合办学</p>
+      </div>
+
+      <!-- 新增：中国专业资质证书（用户选择放在教育背景板块） -->
+      <div class="edu-card">
+        <p class="edu-year">2026</p>
+        <p class="edu-degree">AI 智能体应用工程师</p>
+        <p class="edu-school">工业和信息化部</p>
+        <p class="edu-note">国家职业技能等级证书</p>
+      </div>
+
+      <div class="edu-card">
+        <p class="edu-year">2024</p>
+        <p class="edu-degree">全媒体运营师</p>
+        <p class="edu-school">国家广播电视总局</p>
+        <p class="edu-note">国家职业资格证书</p>
+      </div>
+
+      <div class="edu-card">
+        <p class="edu-year">2024</p>
+        <p class="edu-degree">高级电子商务师</p>
+        <p class="edu-school">工业和信息化部</p>
+        <p class="edu-note">国家职业技能等级证书</p>
       </div>
 
     </div>
@@ -814,23 +914,11 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="skill-group-name">证书 & 资质</p>
         <div class="skill-bar-list">
           <div class="skill-row">
-            <span class="skill-name">BCA Academy 电气工程文凭<span class="skill-level">2024</span></span>
+            <span class="skill-name">BCA Academy 电气工程文凭<span class="skill-level">2017</span></span>
             <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
           </div>
           <div class="skill-row">
-            <span class="skill-name">WES 学历认证<span class="skill-level">2024</span></span>
-            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">工信部 AI 智能体应用工程师<span class="skill-level"></span></span>
-            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">全媒体运营师<span class="skill-level"></span></span>
-            <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">高级电子商务师<span class="skill-level"></span></span>
+            <span class="skill-name">WES 学历认证<span class="skill-level">2026</span></span>
             <div class="skill-track"><div class="skill-fill" style="width:100%"></div></div>
           </div>
         </div>
@@ -862,7 +950,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="project-name">AI 工作流自动化实践</p>
         <p class="project-desc">将 LLM 模型与 MCP 协议整合进个人日常工作流，探索 AI 工具对个人生产力的系统性提升路径。</p>
         <div class="project-footer">
-          <span class="project-year">2024</span>
+          <span class="project-year">2023 至今</span>
           <span class="project-more">查看详情 →</span>
         </div>
       </div>
@@ -872,7 +960,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="project-name">Obsidian 个人知识库系统</p>
         <p class="project-desc">基于 Obsidian 搭建个人 RAG 知识库，结合本地 AI 模型实现知识自动归档与语义检索。</p>
         <div class="project-footer">
-          <span class="project-year">2024</span>
+          <span class="project-year">2025</span>
           <span class="project-more">查看详情 →</span>
         </div>
       </div>
@@ -882,7 +970,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="project-name">MediaCrawler 社媒数据采集</p>
         <p class="project-desc">应用开源爬虫工具进行社交媒体数据采集，服务于内容分析与舆情研究场景。</p>
         <div class="project-footer">
-          <span class="project-year">2024</span>
+          <span class="project-year">2025</span>
           <span class="project-more">查看详情 →</span>
         </div>
       </div>
@@ -892,7 +980,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
         <p class="project-name">个人简历网站</p>
         <p class="project-desc">使用纯 HTML/CSS/JS 构建个人简历网站，结合 Claude Code 进行 AI 辅助开发与持续迭代。</p>
         <div class="project-footer">
-          <span class="project-year">2025</span>
+          <span class="project-year">2026</span>
           <span class="project-more">查看详情 →</span>
         </div>
       </div>
@@ -957,7 +1045,7 @@ footer p { font-size: 12px; color: var(--muted); font-weight: 300; }
 
 const expData = [
   {
-    period:   '2022 — 2025',
+    period:   '2023 — 2026',
     company:  '建筑监理咨询有限公司',
     location: '西安，陕西',
     title:    '经营部副部长',
@@ -975,7 +1063,7 @@ const expData = [
     tags: ['项目管理','业务拓展','团队管理','运营统筹'],
   },
   {
-    period:   '2021 — 2022',
+    period:   '2022 — 2023',
     company:  '制造业公司',
     location: '西安，陕西',
     title:    '人事主管',
@@ -992,10 +1080,10 @@ const expData = [
     tags: ['人事管理','招聘','劳动关系'],
   },
   {
-    period:   '2019 — 2021',
+    period:   '2020 — 2022',
     company:  '电商平台',
     location: '西安，陕西',
-    title:    '电商运营专员',
+    title:    '电商运营助理',
     desc:     '负责线上店铺日常运营，涵盖商品上架、订单管理与客户服务流程优化。',
     duties: [
       '商品信息维护与上架管理',
@@ -1012,7 +1100,7 @@ const expData = [
 
 const projData = [
   {
-    year:    '2024',
+    year:    '2023 至今',
     name:    'AI 工作流自动化实践',
     role:    '独立实践者',
     org:     '个人项目',
@@ -1030,7 +1118,7 @@ const projData = [
     link: null,
   },
   {
-    year:    '2024',
+    year:    '2025',
     name:    'Obsidian 个人知识库系统',
     role:    '独立开发者',
     org:     '个人项目',
@@ -1047,7 +1135,7 @@ const projData = [
     link: null,
   },
   {
-    year:    '2024',
+    year:    '2025',
     name:    'MediaCrawler 社媒数据采集',
     role:    '独立实践者',
     org:     '个人项目',
@@ -1063,7 +1151,7 @@ const projData = [
     link: null,
   },
   {
-    year:    '2025',
+    year:    '2026',
     name:    '个人简历网站',
     role:    '独立开发者',
     org:     '个人项目',
